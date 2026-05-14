@@ -1,10 +1,13 @@
+.landing-page {
+    transition: all 248ms ease-out ;
+}
+
 .island-gif {
     background-color: transparent;
     background: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -300px;
 }
 
 .logo-container {
@@ -15,7 +18,7 @@
 
 .nook-link {
     position: absolute;
-    top: 4.6vh;
+    top: 1%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: block;
@@ -34,7 +37,7 @@
     align-items: center;
     gap: 24px;
     background-color: #F5F1E3;
-    height: 650px;
+    height: 70%;
     width: 328.3px;
     border-radius: 35px;
 }
@@ -44,6 +47,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: scale(1);
+    transition: transform 248ms ease-in-out;
+}
+
+.create-island:hover {
+    transform: scale(1.096);
+}
+
+.create-island:active {
+    transform: scale(0.96);
+    transition-duration: 80ms;
 }
 
 button {
@@ -60,11 +74,17 @@ button {
     }
 }
 
+.create-island:hover button {
+    cursor: pointer;
+}
+
+
+
 .background {
     position: absolute;
     background-color: #DEAD00;
     top: 50%;
-    width: 100%;
+    width: 75%;
     height: 25%;
     z-index: 0;
     border-radius: 999px;

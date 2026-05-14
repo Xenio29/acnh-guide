@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { IslandCreate } from "./island-create/island-create";
 
 @Component({
   selector: 'app-root',
-  imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  imports: [IslandCreate]
 })
-export class App {}
+export class App {
+  readonly landingPageHidden = signal(false);
+
+  hideLandingPage(): void {
+    this.landingPageHidden.set(true);
+  }
+}
