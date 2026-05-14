@@ -6,47 +6,53 @@
     <div class="island-name">
         <input type="text" class="name-island" placeholder="Nom de l'île" id="name-island" alt="Nom de l'île">
     </div>
-    <div class="hemisphere">
-        <fieldset id="hemi-form">
-            <legend id="form-title">Hémisphère</legend>
+    <div class="radio-forms">
+        <div class="hemisphere">
+            <form id="hemi-form">
 
-            <div id="north">
-                <input type="radio" name="hemisphere" id="north" value="north" checked>
-                <label for="north">Nord</label>
-            </div>
-            <div id="south">
-                <input type="radio" name="hemisphere" id="south" value="south" checked>
-                <label for="south">Sud</label>
-            </div>
-        </fieldset>
-    </div>
-    <div class="fruit">
-        <fieldset id="fruit-form">
-            <legend id="form-title">Fruit</legend>
+                <div class="hemi-opt">
+                    <input type="radio" name="hemisphere" id="north" value="north" checked>
+                        <label for="north" id="north-label" class="north-label">
+                            <img src="./Sujet.png" alt="" class="north-hemi-img">
+                        </label>
+                        <label for="north" id="north-text" class="north-text">Nord</label>
+                    <input type="radio" name="hemisphere" id="south" value="south" checked>
+                        <label for="south" id="selected-label" class="south-label" >
+                            <img src="./Sujet-2.png" alt="" class="south-hemi-img">
+                        </label> 
+                        <label for="south" id="south-text" class="south-text">Sud</label>
+                </div>
+            </form>
+        </div>
+        <div class="fruit">
+            <form id="fruit-form">
 
-            <div id="apple">
-                <input type="radio" name="fruit" id="apple" value="apple" checked>
-                <label for="apple">Pomme</label>
-            </div>
-            <div id="pear">
-                <input type="radio" name="fruit" id="pear" value="pear" checked>
-                <label for="pear">Poire</label>
-            </div>
-            <div id="peach">
-                <input type="radio" name="fruit" id="peach" value="peach" checked>
-                <label for="peach">Pêche</label>
-            </div>
-            <div id="cherry">
-                <input type="radio" name="fruit" id="cherry" value="cherry" checked>
-                <label for="cherry">Cerise</label>
-            </div>
-            <div id="orange">
-                <input type="radio" name="fruit" id="orange" value="orange" checked>
-                <label for="orange">Orange</label>
-            </div>
-        </fieldset>
+                <div class="fruit-opt">
+                    <input type="radio" name="fruit" id="apple" value="apple" checked>
+                        <label for="apple" id="apple-label" class="apple-label">
+                            <img src="/icons/fruit_icons/Apple.png" alt="Pomme" class="apple-img">
+                        </label>
+                    <input type="radio" name="fruit" id="pear" value="pear">
+                        <label for="pear" id="pear-label" class="pear-label">
+                            <img src="/icons/fruit_icons/Pear.png" alt="" class="pear-img">
+                        </label>
+                    <input type="radio" name="fruit" id="peach" value="peach">
+                        <label for="peach" id="peach-label" class="peach-label">
+                            <img src="/icons/fruit_icons/Peach.png" alt="" class="peach-img">
+                        </label>
+                    <input type="radio" name="fruit" id="cherry" value="cherry">
+                        <label for="cherry" id="cherry-label" class="cherry-label">
+                            <img src="/icons/fruit_icons/Cherry.png" alt="" class="cherry-img">
+                        </label>
+                    <input type="radio" name="fruit" id="orange" value="orange">
+                        <label for="orange" id="orange-label" class="orange-label">
+                            <img src="/icons/fruit_icons/Orange.png" alt="" class="orange-img">
+                        </label>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="villagers">
+    <div class="villagers" [hidden]="!isVillagerChoicePopupVisible()">
         
     </div>
     

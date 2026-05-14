@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 import { Village } from '../models/village';
 
 const villagerNames = [
@@ -428,6 +428,9 @@ const villagerNames = [
   styleUrl: './island-create.css',
 })
 export class IslandCreate {
+
+  isVillagerChoicePopupVisible: WritableSignal<boolean> = signal(false);
+
   villagers: Village[] = villagerNames.map((name) => ({
     name,
     iconPath: `/icons/villager_icons/${encodeURIComponent(name)}.png`,
