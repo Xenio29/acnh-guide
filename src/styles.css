@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
 
+:root {
+    --app-text-color: #524E34;
+}
+
 html, body {
     box-sizing: border-box;
     margin: 0;
@@ -19,10 +23,27 @@ body {
     background-position:
         0 0,
         25px 25px;
-    color: #524E34;
+    color: var(--app-text-color);
 
     font-family: "Baloo 2", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+/* Keep text/icon color stable across browsers (including iOS Safari) */
+p,
+h1,
+h2,
+h3,
+label,
+span,
+button,
+svg {
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+}
+
+a {
+    color: inherit;
 }
