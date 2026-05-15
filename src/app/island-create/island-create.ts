@@ -446,9 +446,9 @@ export class IslandCreate {
     left.fr.localeCompare(right.fr, 'fr', { sensitivity: 'base' })
   );
 
-  villagers: Village[] = this.sortedVillagerNames.map((name) => ({
+    villagers: Village[] = this.sortedVillagerNames.map((name) => ({
     name: name.fr,
-    iconPath: `/icons/villager_icons/${encodeURIComponent(name.en)}.png`,
+    iconPath: `icons/villager_icons/${encodeURIComponent(name.en)}.png`,
     isAdded: signal(false),
     isFavorite: signal(false),
   }));
