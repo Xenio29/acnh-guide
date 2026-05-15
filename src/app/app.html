@@ -3,7 +3,7 @@
 </div>
 
 <div class="phone-container">
-    <div class="landing-page" hidden>
+    <div class="landing-page" [hidden]="landingPageHidden()">
         <div class="island-gif">
             <img src="/island-transparent.png" alt="island" height="100%" width="100%">
         </div>
@@ -15,5 +15,5 @@
             <div class="background"></div>
         </div>
     </div>
-    <app-island-create></app-island-create>
+    <app-island-create [hidden]="!landingPageHidden()"></app-island-create>
 </div>

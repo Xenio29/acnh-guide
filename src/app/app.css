@@ -17,8 +17,8 @@
 }
 
 .nook-link {
-    position: absolute;
-    top: 1%;
+    position: relative;
+    top: -2%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: block;
@@ -37,7 +37,7 @@
     align-items: center;
     gap: 24px;
     background-color: #F5F1E3;
-    height: 70%;
+    height: 75%;
     width: 328.3px;
     border-radius: 35px;
 }

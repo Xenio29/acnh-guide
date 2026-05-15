@@ -12,7 +12,7 @@
 
                 <div class="hemi-opt">
                     <input type="radio" name="hemisphere" id="north" value="north" checked>
-                        <label for="north" id="north-label" class="north-label">
+                        <label for="north" id="north-label" class="north-label" >
                             <img src="./Sujet.png" alt="" class="north-hemi-img">
                         </label>
                         <label for="north" id="north-text" class="north-text">Nord</label>
@@ -52,8 +52,81 @@
             </form>
         </div>
     </div>
-    <div class="villagers" [hidden]="!isVillagerChoicePopupVisible()">
-        
+    
+    <div class="villager" id="villager">
+        <div class="icon-box1" id="icon-box1">
+            <button type="button" class="icon-box1-btn" id="icon-box1-btn" (click)="openVillagerPopup(1)">
+                @if (villagerSlots()[0]) {
+                    <img [src]="villagerSlots()[0]!.iconPath" [alt]="villagerSlots()[0]!.name">
+                } @else {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">round-plus</title><path fill="currentColor" d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2"/></svg>
+                }
+            </button>
+        </div>
+        <div class="icon-box2" id="icon-box2">
+            <button type="button" class="icon-box2-btn" id="icon-box2-btn" (click)="openVillagerPopup(2)">
+                @if (villagerSlots()[1]) {
+                    <img [src]="villagerSlots()[1]!.iconPath" [alt]="villagerSlots()[1]!.name">
+                } @else {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">round-plus</title><path fill="currentColor" d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2"/></svg>
+                }
+            </button>
+        </div>
+    </div>
+
+    <div
+        class="villager-popup"
+        id="villager-popup"
+        role="dialog"
+        aria-modal="true"
+        [class.is-open]="isVillagerChoicePopupVisible()"
+        [attr.aria-hidden]="!isVillagerChoicePopupVisible()"
+        (click)="closeVillagerPopup()"
+    >
+        <div class="villager-popup-panel" (click)="$event.stopPropagation()">
+            <h2>Choisir un villageois</h2>
+            <div class="villager-search-box">
+                <input
+                    type="text"
+                    class="villager-search"
+                    placeholder="Rechercher un villageois"
+                    [value]="searchQuery()"
+                    (input)="searchQuery.set($any($event.target).value)"
+                >
+            </div>
+            <div class="villagers-grid" id="villagers-grid">
+                @for (villager of filteredVillagers(); track villager.name) {
+                    <div class="villager-box" id="villager-box">
+                        <div class="favorite-box" id="favorite-box">
+                            <button type="button" class="favorite-btn" id="favorite-btn" (click)="villager.isFavorite.set(!villager.isFavorite())">
+                                @if (!villager.isFavorite()) {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">star-outline-rounded</title><path fill="currentColor" d="m8.85 16.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425zm3.15.45l-4.15 2.5q-.275.175-.575.15t-.525-.2t-.35-.437t-.05-.588l1.1-4.725L3.775 10.8q-.25-.225-.312-.513t.037-.562t.3-.45t.55-.225l4.85-.425l1.875-4.45q.125-.3.388-.45t.537-.15t.537.15t.388.45l1.875 4.45l4.85.425q.35.05.55.225t.3.45t.038.563t-.313.512l-3.675 3.175l1.1 4.725q.075.325-.05.588t-.35.437t-.525.2t-.575-.15zm0-5.025"/></svg>
+                                } @else {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">star-rounded</title><path fill="currentColor" d="m12 17.275l-4.15 2.5q-.275.175-.575.15t-.525-.2t-.35-.437t-.05-.588l1.1-4.725L3.775 10.8q-.25-.225-.312-.513t.037-.562t.3-.45t.55-.225l4.85-.425l1.875-4.45q.125-.3.388-.45t.537-.15t.537.15t.388.45l1.875 4.45l4.85.425q.35.05.55.225t.3.45t.038.563t-.313.512l-3.675 3.175l1.1 4.725q.075.325-.05.588t-.35.437t-.525.2t-.575-.15z"/></svg>
+                                }
+                            </button>
+                        </div>
+                        <div class="villager-icon-box" id="villager-icon-box">
+                            <img [src]="villager.iconPath" [alt]="villager.name">
+                        </div>
+                        <div class="villager-name-box" id="villager-name-box">
+                            <p class="villager-name" id="villager-name">{{villager.name}}</p>
+                        </div>
+                        <div class="villager-confirm-btn-box" id="villager-confirm-btn-box">
+                            <button class="villager-confirm-btn" id="villager-confirm-btn" [disabled]="isVillagerDisabled(villager)" (click)="addVillager(villager)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">round-home</title><path fill="currentColor" d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="confirm" id="confirm">
+        <button class="confirm-btn" id="confirm-btn" (click)="saveIslandToSupabase()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 12"><title xmlns="">checkmark-12-filled</title><path fill="currentColor" d="M9.765 3.205a.75.75 0 0 1 .03 1.06l-4.25 4.5a.75.75 0 0 1-1.075.015L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.705 1.704l3.72-3.939a.75.75 0 0 1 1.06-.03"/></svg>
+        </button>
     </div>
     
 
