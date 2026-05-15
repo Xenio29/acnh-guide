@@ -1,0 +1,8 @@
+<div class="daily-task">
+  <button class="daily-task-btn" type="button" aria-label="{{ label }}" (click)="openApp()">
+    <img [src]="icon" [alt]="label">
+  </button>
+  @if (label) {
+    <div class="daily-task-label">{{ label }}</div>
+  }
+</div>

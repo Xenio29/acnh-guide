@@ -1,0 +1,46 @@
+.daily-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.daily-task-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.daily-task-btn {
+  cursor: pointer;
+  border-radius: 20px;
+  outline: 0px solid #00b5aa;
+  transition: all 100ms ease-in-out;
+}
+
+.daily-task-btn:hover {
+  outline: 3px solid #00b5aa;
+}
+
+.daily-task-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.daily-task-label {
+  font-size: 0.75rem;
+  color: currentColor;
+  text-align: center;
+}
+
+.daily-task {
+  width: 84px;
+}

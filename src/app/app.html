@@ -3,17 +3,30 @@
 </div>
 
 <div class="phone-container">
-    <div class="landing-page" [hidden]="landingPageHidden()">
-        <div class="island-gif">
-            <img src="island-transparent.png" alt="island" height="100%" width="100%">
-        </div>
+    @if (currentView() === 'home') {
+        <div class="landing-page">
+            <div class="island-gif">
+                <img src="island-transparent.png" alt="island" height="100%" width="100%">
+            </div>
 
-        <div class="create-island">
-            <button type="button" (click)="hideLandingPage()">
-                <span>NOUVELLE ÎLE</span>
-            </button>
-            <div class="background"></div>
+            <div class="create-island">
+                <button type="button" (click)="hideLandingPage()">
+                    <span>NOUVELLE ÎLE</span>
+                </button>
+                <div class="background"></div>
+            </div>
         </div>
-    </div>
-    <app-island-create [hidden]="!landingPageHidden()"></app-island-create>
+    }
+
+    @if (currentView() === 'create') {
+        <app-island-create class="island-create-app" (saved)="showHomePage()"></app-island-create>
+    }
+
+    @if (currentView() === 'villagers') {
+        <app-villagers class="villagers-app"></app-villagers>
+    }
+
+    @if (currentView() === 'landing') {
+        <app-home-page class="home-page-app" (openApp)="openApp($event)"></app-home-page>
+    }
 </div>

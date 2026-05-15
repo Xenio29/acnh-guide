@@ -1,0 +1,20 @@
+<div class="top-notch">
+    
+    <div class="date">{{ currentDate }}</div>
+    <div class="time">{{ currentTime }}</div>
+</div>
+<div class="app-grid">
+    @for (item of items; track item.label) {
+        <app-daily-task icon="{{ item.icon }}" label="{{ item.label }}" href="{{ item.href }}" (open)="onOpen($event)"></app-daily-task>
+    }
+</div>
+<div class="profile">
+    <div class="profile-icon">
+        <button class="profile-btn" id="profile-btn">
+            <img src="profile-icon.jpg" alt="Profile" class="profile-img">
+        </button>
+    </div>
+    <div class="profile-text">
+        <p>Profile</p>
+    </div>
+</div>

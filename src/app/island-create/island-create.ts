@@ -1,9 +1,9 @@
-import { Component, computed, signal, WritableSignal } from '@angular/core';
+import { Component, computed, EventEmitter, Output, signal, WritableSignal } from '@angular/core';
 import { Village } from '../models/village';
 import { NgIf, NgForOf } from "../../../node_modules/@angular/common/types/_common_module-chunk";
 import { SupabaseService } from '../supabase.service';
 
-const villagerNames: { en: string; fr: string }[] = [
+export const villagerNames: { en: string; fr: string }[] = [
   { en: 'Ace', fr: 'Boumboum' },
   { en: 'Admiral', fr: 'Maréchal' },
   { en: 'Agent S', fr: 'Ninjette' },
@@ -430,6 +430,7 @@ const villagerNames: { en: string; fr: string }[] = [
   styleUrl: './island-create.css',
 })
 export class IslandCreate {
+  @Output() saved = new EventEmitter<void>();
 
   isVillagerChoicePopupVisible: WritableSignal<boolean> = signal(false);
   selectedVillagerSlot: WritableSignal<1 | 2 | null> = signal(null);
@@ -538,6 +539,7 @@ export class IslandCreate {
       }
 
       console.log('Saved island to Supabase, id=', id);
+      this.saved.emit();
     } catch (err) {
       console.error('Error saving island to Supabase', err);
     }
