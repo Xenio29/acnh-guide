@@ -94,9 +94,10 @@ button {
 .background {
     position: absolute;
     background-color: #DEAD00;
-    top: 50%;
-    width: 75%;
-    height: 25%;
+    top: 74cqh;
+    transform: translateY(-50%);
+    width: 71%;
+    height: 5%;
     z-index: 0;
     border-radius: 999px;
 }
