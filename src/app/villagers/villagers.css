@@ -1,0 +1,281 @@
+/* ── Section wrapper ── */
+.villagers {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ── Top bar ── */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  flex-shrink: 0;
+}
+
+/* ── Search bar ── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;        /* prevents it from overflowing */
+  max-width: 180px;    /* keeps it compact between the two buttons */
+  background: #fff;
+  border: 1.5px solid #c9ba8c;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.search-icon {
+  color: #8a7a50;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.8rem;
+  width: 100%;
+  color: #3b3120;
+}
+
+.search-input::placeholder {
+  color: #b0a07a;
+}
+
+/* ── Filter toggle button ── */
+.filters {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #e8ddb5;
+  border: 1.5px solid #c9ba8c;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #3b3120;
+  white-space: nowrap;
+}
+
+.filter-toggle-btn:hover {
+  background: #ddd0a0;
+}
+
+/* ── Filter panel popup ── */
+.filter-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #fff;
+  border: 1.5px solid #c9ba8c;
+  border-radius: 12px;
+  padding: 12px;
+  z-index: 100;
+  min-width: 260px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-label {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8a7a50;
+}
+
+.filter-options {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-options--wrap {
+  flex-wrap: wrap;
+}
+
+.filter-option-btn {
+  background: #f5f0e0;
+  border: 1.5px solid #d4c98a;
+  border-radius: 12px;
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: #3b3120;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.filter-option-btn:hover {
+  background: #e8ddb5;
+}
+
+.filter-option-btn.active {
+  background: #b5a55a;
+  border-color: #8a7a50;
+  color: #fff;
+}
+
+.filter-reset-btn {
+  margin-top: 4px;
+  background: none;
+  border: 1px solid #c9ba8c;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: #8a7a50;
+  align-self: flex-end;
+}
+
+.filter-reset-btn:hover {
+  background: #fdf7e8;
+}
+
+/* ── Grid wrapper ── */
+.villager-grid-wrapper {
+  height: calc(100vh - 220px);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Grid ── */
+.villager-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+  min-height: 0;
+
+  /* Keep grid items top-left aligned when there are few results. */
+  align-content: start;
+  align-items: start;
+  justify-items: center;
+}
+
+/* ── Clickable card ── */
+.clickable-div {
+  cursor: pointer;
+}
+
+/* ── Villager box ── */
+.villager-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  padding-top: 28px;
+  border-radius: 8px;
+  background-color: #e8ddb5;
+}
+
+/* ── Icon ── */
+.icon-box img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+/* ── Name ── */
+.name-box {
+  width: 100%;
+  text-align: center;
+}
+
+.name {
+  font-size: 0.65rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Favorite button (top-left) ── */
+.favorite-box {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Add to home button ── */
+.add-to-home {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.add-to-home-btn {
+  cursor: pointer;
+  padding: 2px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-color: #f5eed2;
+  border: 1.5px solid #c9ba8c;
+  color: #3b3120;
+  transition: all 148ms ease-in-out;
+}
+
+.add-to-home-btn:hover {
+    background-color: #f8f3e0;
+}
+
+.add-to-home-btn:active {
+    border: 3px solid #c9ba8c;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8ddb5;
+  border: 1.5px solid #c9ba8c;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #3b3120;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.back-btn:hover {
+  background: #ddd0a0;
+}

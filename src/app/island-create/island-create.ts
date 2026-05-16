@@ -509,9 +509,7 @@ export class IslandCreate {
     const hemi = (document.querySelector('input[name="hemisphere"]:checked') as HTMLInputElement | null)?.value ?? '';
     const fruit = (document.querySelector('input[name="fruit"]:checked') as HTMLInputElement | null)?.value ?? '';
 
-    const villagers = this.villagerSlots().map((v) => (v ? { name: v.name, iconPath: v.iconPath } : null));
-
-    return { islandName, hemi, fruit, villagers };
+    return { islandName, hemi, fruit };
   }
 
   async saveIslandToSupabase(): Promise<void> {
@@ -519,20 +517,18 @@ export class IslandCreate {
       const device = SupabaseService.getOrCreateDeviceFootprint();
       const existing = await SupabaseService.getAccountByDevice(device);
 
-      const { islandName, hemi, fruit, villagers } = this.readIslandForm();
+      const { islandName, hemi, fruit } = this.readIslandForm();
 
       let id: number;
       if (existing && existing.length > 0) {
         id = existing[0].id;
         // update account using correct column names
         await SupabaseService.updateAccount(id, { 'island-name': islandName, hemisphere: hemi, fruit, 'device-footprint': device });
-        await SupabaseService.updateData(id, { villagers });
       } else {
         // create account without forcing id; let DB assign id
         const created = await SupabaseService.createAccount({ 'island-name': islandName, hemisphere: hemi, fruit, 'device-footprint': device });
         if (created && created.id) {
           id = created.id;
-          await SupabaseService.createData({ id, villagers });
         } else {
           throw new Error('Failed to create account');
         }
