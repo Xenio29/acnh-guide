@@ -3,15 +3,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    margin-top: 10%;
+    height: 100%;
+    margin-top: 0;
+    padding: 3cqh 0;
+    box-sizing: border-box;
 }
 
 .title {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 8cqh;
+}
+
+.title h1 {
+    font-size: clamp(14px, 4.5cqh, 28px);
+    margin: 0;
 }
 
 input {
@@ -31,13 +38,14 @@ input:focus-within {
 .island-name {
     display: flex;
     justify-content: center;
-    margin-bottom: 10%;
+    margin-bottom: 2cqh;
 }
 
 .name-island {
     width: 75%;
-    font-size: 16px;
-    padding: 10px 15px;
+    font-size: clamp(15px, 3.5cqh, 18px);
+    padding: clamp(4px, 1.2cqh, 10px) 15px;
+    margin-bottom: 6cqh;
 }
 
 .name-island:focus,
@@ -52,24 +60,31 @@ input:focus-within {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: clamp(6px, 2cqh, 20px);
 }
 
 .north-hemi-img, .south-hemi-img {
-    height: 50px;
-    width: 50px;
+    height: clamp(30px, 8.5cqh, 52px);
+    width: clamp(30px, 8.5cqh, 52px);
 }
 
 .hemi-opt {
     display: grid;
     grid-template-columns: auto auto;
-    gap: 10px;
+    gap: 10px 60px;
     align-items: start;
     justify-items: center;
-
+    
     input[type="radio"] {
         display: none;
     }
+}
+
+.hemi-opt input[type="radio"]:checked + label {
+    background-color: #00b5aa;
+    width: clamp(36px, 9cqh, 60px);
+    height: clamp(36px, 9cqh, 60px);
+    padding: 0;
 }
 
 .hemi-opt > label:nth-child(2) {
@@ -115,13 +130,13 @@ input[type="radio"] + label {
 }
 
 .apple-img, .pear-img, .peach-img, .cherry-img, .orange-img {
-    height: 40px;
-    width: 40px;
+    height: clamp(34px, 6.8cqh, 52px);
+    width: clamp(34px, 6.8cqh, 52px);
 }
 
 .fruit-opt {
     display: flex;
-    gap: 10px;
+    gap: clamp(5px, 1.5cqh, 10px);
     align-items: center;
     justify-content: center;
 }
@@ -147,17 +162,18 @@ input[type="radio"] + label {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 10%;
-    height: 100%;
+    margin-top: clamp(4px, 2cqh, 20px);
+    height: auto;
 }
 
 .icon-box1-btn, .icon-box2-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 20%;
     background-color: #ede2cc;
-    height: 60px;
-    width: 60px;
+    height: clamp(60px, 12cqh, 70px);
+    width: clamp(60px, 12cqh, 70px);
     border-radius: 999px;
     border: none;
     transition: all 148ms ease-in-out;
@@ -196,7 +212,7 @@ input[type="radio"] + label {
     justify-content: center;
     padding: 24px;
     background: rgba(27, 23, 17, 0.42);
-    border-radius: 35px;
+    border-radius: 30px;
     backdrop-filter: blur(6px);
     z-index: 1000;
     opacity: 0;
@@ -395,8 +411,9 @@ input[type="radio"] + label {
 .confirm {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 10%;
+    align-items: flex-end;
+    height: 12%;
+    margin-top: clamp(4px, 2cqh, 20px);
 }
 
 .confirm-btn {
@@ -404,7 +421,7 @@ input[type="radio"] + label {
     align-items: center;
     justify-content: center;
     background-color: #ede2cc;
-    height: 40px;
+    height: clamp(28px, 6cqh, 40px);
     width: 80%;
     border-radius: 10px;
     border: none;
